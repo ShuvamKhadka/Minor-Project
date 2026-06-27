@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Resume Ranking System</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <img src="/static/logo.png" alt="EEC" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <div class="nav-logo-fb">EEC</div>
+  </div>
+  <div class="nav-center">Resume <b>Ranking</b> System</div>
+  <div class="nav-right">By EEC Students</div>
+</nav>
+
+<div class="wrap">
+  <aside class="left">
+    <div>
+      <div class="sec-label">Job Description</div>
+      <textarea id="jd" placeholder="Paste the job description here…"></textarea>
+      <div class="jd-file-row">
+        <label title="Upload JD as PDF, DOCX or TXT">
+          <input type="file" id="jd-file" accept=".pdf,.docx,.txt" onchange="setJdFile(this)"/>
+          📎 Or upload JD file
+          <span style="margin-left:auto;font-size:.68rem">.pdf .docx .txt</span>
+        </label>
+      </div>
+      <div id="jd-fname"></div>
+    </div>
+
+    <div>
+      <div class="sec-label">Resumes <span style="font-weight:400;text-transform:none">— PDF or DOCX, bulk upload</span></div>
+      <div class="drop" id="drop">
+        <input type="file" id="res-in" accept=".pdf,.docx" multiple onchange="addFiles(this.files);this.value=''"/>
+        <div style="font-size:1.8rem">📄</div>
+        <p><b>Click to browse</b> or drag & drop</p>
+        <p style="font-size:.72rem;margin-top:.2rem">.pdf · .docx · up to 500 files</p>
+      </div>
+      <div id="chips"></div>
+    </div>
+
+    <div>
+      <div class="sec-label">Number of Candidates to Shortlist (K)</div>
+      <input type="number" id="top-k" value="5" min="1" max="100" placeholder="e.g. 5" required />
+    </div>
+
+    <button class="btn" id="sbtn" onclick="submit()">
+      <div class="spin"></div>
+      <span class="bt">🔍 Rank Resumes</span>
+    </button>
+
+    <div class="stats">
+      <div class="stat"><div class="sv" id="st">—</div><div class="sl">Processed</div></div>
+      <div class="stat"><div class="sv" id="sp">—</div><div class="sl">Top Score</div></div>
+      <div class="stat"><div class="sv" id="sa">—</div><div class="sl">Avg Score</div></div>
+    </div>
+  </aside>
+
+  <main class="right">
+    <div class="rh">
+      <h2>Ranked Results</h2>
+      <span class="badge" id="cnt">0 resumes</span>
+    </div>
+    <div class="empty" id="emp">
+      <div class="ei">🎯</div>
+      <p>Upload a job description and resumes to see AI-powered rankings.</p>
+    </div>
+    <div class="grid" id="grid"></div>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="/static/scrip.js"></script>
+</body>
+</html>
