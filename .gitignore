@@ -1,0 +1,9 @@
+.DS_Store
+.localized
+*.key
+*.archimate
+*.archimate.bak
+Datasets/
+Multimedia/
+GIT/
+lab.c
